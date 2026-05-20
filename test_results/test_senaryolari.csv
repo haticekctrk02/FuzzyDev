@@ -1,0 +1,9 @@
+Senaryo,Calisma_Suresi,Uyku_Suresi,Aktivite,Stres,Beklenen_Sonuc,Yorum
+Sağlıklı çalışma günü,6,8,85,20,Çok yüksek,Bu durumda uyku ve aktivite yüksek, stres düşük olduğu için verimlilik yüksek beklenir.
+Uykusuz ve stresli gün,9,3,30,90,Çok düşük,Yüksek çalışma süresi, düşük uyku ve yüksek stres verimliliği düşürür.
+Ortalama çalışma günü,5,6,55,45,Orta,Giriş değerleri dengeli olduğu için orta seviye verimlilik beklenir.
+Fazla çalışma ama iyi uyku,10,8,70,40,Orta/Yüksek,Uyku iyi olsa da çalışma süresinin fazla olması sonucu dengeler.
+Az çalışma düşük aktivite,2,7,20,30,Düşük/Orta,Uyku iyi olsa da aktivitenin düşük olması verimliliği sınırlar.
+Yoğun ama kontrollü gün,8,7,80,35,Yüksek,Aktivite yüksek ve stres kontrol edilebilir düzeydedir.
+Tükenmişlik riski,11,4,25,85,Çok düşük,Fazla çalışma, düşük uyku ve yüksek stres tükenmişlik belirtisi oluşturur.
+Dengeli gün,6,7,65,50,Orta/Yüksek,Çalışma ve uyku dengeli, stres orta seviyededir.

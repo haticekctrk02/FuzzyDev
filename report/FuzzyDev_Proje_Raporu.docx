@@ -1,0 +1,367 @@
+BULANIK MANTIK DÖNEM PROJESİ 
+FuzzyDev: Akıllı Yazılım Geliştirici Verimlilik ve Yorgunluk Analiz Sistemi 
+
+Hazırlayan: Hatice Kocatürk 
+
+1. Giriş ve Problem Tanımı 
+
+Günümüzde yazılım geliştirme süreçleri uzun çalışma saatleri, yoğun zihinsel yük ve sürekli dikkat gerektirmektedir. Yazılım geliştiricilerin performansları yalnızca çalışma süresine bağlı değildir. Uyku düzeni, stres seviyesi ve çalışma sırasındaki aktivite düzeyi gibi birçok faktör geliştiricinin verimliliğini doğrudan etkilemektedir. 
+
+Geleneksel yöntemlerde bu tür problemler çoğunlukla kesin sınırlar ile değerlendirilmektedir. Örneğin, 6 saatten az uyku alan bir kişinin verimsiz olduğu veya 8 saatten fazla çalışan bir kişinin mutlaka yorgun olduğu varsayılabilir. Ancak gerçek yaşamda durum her zaman bu kadar kesin değildir. 
+
+Örneğin iki geliştirici aynı süre boyunca çalışmış olsa bile farklı stres seviyelerine ve farklı uyku düzenlerine sahip olabilir. Bu nedenle kesin mantık yerine belirsizlikleri değerlendirebilen bulanık mantık yöntemi tercih edilmiştir. 
+
+Bu proje kapsamında geliştiricinin çalışma durumuna göre verimlilik düzeyini tahmin eden bir bulanık kontrol sistemi geliştirilmiştir. 
+
+2. Sistemin Bulanık Mantık ile Çözülme Gerekçesi 
+
+Bu problemin bulanık mantık yöntemiyle çözülmesinin temel nedenleri aşağıda verilmiştir: 
+
+İnsan davranışları kesin değildir.  
+
+Verimlilik kişiden kişiye değişebilir.  
+
+Keskin sınırlar gerçek yaşamı tam olarak temsil etmez.  
+
+Birden fazla değişken aynı anda değerlendirilmektedir.  
+
+Örneğin bir geliştirici: 
+
+8 saat çalışmış olabilir  
+
+7 saat uyumuş olabilir  
+
+Stres seviyesi düşük olabilir  
+
+Bu durumda kişi tamamen yorgun veya tamamen verimli olarak değerlendirilemez. 
+
+Bulanık mantık ara değerleri değerlendirebildiği için daha gerçekçi ve esnek sonuçlar üretmektedir. 
+
+3. Sistem Tasarımı 
+
+3.1 Giriş Değişkenleri 
+
+Bu sistemde dört adet giriş değişkeni kullanılmıştır. 
+
+Çalışma Süresi 
+
+Aralık: 0–12 saat 
+
+Dilsel ifadeler: 
+
+Az  
+
+Normal  
+
+Fazla  
+
+Uyku Süresi 
+
+Aralık: 0–10 saat 
+
+Dilsel ifadeler: 
+
+Kötü  
+
+Orta  
+
+İyi  
+
+Aktivite Seviyesi 
+
+Aralık: 0–100 
+
+Dilsel ifadeler: 
+
+Düşük  
+
+Orta  
+
+Yüksek  
+
+Stres Seviyesi 
+
+Aralık: 0–100 
+
+Dilsel ifadeler: 
+
+Düşük  
+
+Orta  
+
+Yüksek  
+
+ 
+
+3.2 Çıkış Değişkeni 
+
+Çıkış değişkeni: 
+
+Verimlilik Skoru 
+
+Aralık: 0–100 
+
+Dilsel ifadeler: 
+
+Çok Düşük  
+
+Düşük  
+
+Orta  
+
+Yüksek  
+
+Çok Yüksek  
+
+ 
+
+4. Üyelik Fonksiyonları 
+
+Bu projede üçgensel üyelik fonksiyonları kullanılmıştır. 
+
+Çalışma Süresi 
+
+Dilsel Değer 
+
+Parametre 
+
+Az 
+
+[0,0,4] 
+
+Normal 
+
+[3,6,8] 
+
+Fazla 
+
+[7,12,12] 
+
+Uyku Süresi 
+
+Dilsel Değer 
+
+Parametre 
+
+Kötü 
+
+[0,0,5] 
+
+Orta 
+
+[4,6,8] 
+
+İyi 
+
+[7,10,10] 
+
+Aktivite Seviyesi 
+
+Dilsel Değer 
+
+Parametre 
+
+Düşük 
+
+[0,0,40] 
+
+Orta 
+
+[30,50,70] 
+
+Yüksek 
+
+[60,100,100] 
+
+Stres Seviyesi 
+
+Dilsel Değer 
+
+Parametre 
+
+Düşük 
+
+[0,0,40] 
+
+Orta 
+
+[30,50,70] 
+
+Yüksek 
+
+[60,100,100] 
+
+ 
+
+5. Kural Tabanı 
+
+Sistemde toplam 20 adet IF–THEN kuralı kullanılmıştır. 
+
+Örnek kurallar: 
+
+Kural 1: 
+
+IF çalışma süresi = Az 
+AND uyku = İyi 
+AND aktivite = Yüksek 
+AND stres = Düşük 
+
+THEN verimlilik = Çok Yüksek 
+
+Kural 2: 
+
+IF çalışma süresi = Fazla 
+AND uyku = Kötü 
+AND stres = Yüksek 
+
+THEN verimlilik = Çok Düşük 
+
+Kural 3: 
+
+IF çalışma süresi = Normal 
+AND uyku = Orta 
+AND aktivite = Orta 
+AND stres = Orta 
+
+THEN verimlilik = Orta 
+
+ 
+
+6. Çıkarım Motoru ve Durulaştırma 
+
+Bu projede Mamdani çıkarım yöntemi kullanılmıştır. 
+
+Sistemin çalışma süreci aşağıdaki gibidir: 
+
+Kullanıcıdan giriş değerleri alınır  
+
+Bulanıklaştırma uygulanır  
+
+Kurallar değerlendirilir  
+
+Kurallar birleştirilir  
+
+Durulaştırma uygulanır  
+
+Sonuç üretilir  
+
+Durulaştırma yöntemi olarak Centroid (Ağırlık Merkezi) yöntemi kullanılmıştır. 
+
+Bu yöntem bulanık kümenin ağırlık merkezini hesaplayarak tek bir sayısal sonuç üretmektedir. 
+
+ 
+
+7. Uygulamanın Detayları 
+
+Projede Python programlama dili kullanılmıştır. 
+
+Kullanılan kütüphaneler: 
+
+Python  
+
+Scikit-Fuzzy  
+
+NumPy  
+
+Pandas  
+
+Matplotlib  
+
+Streamlit  
+
+Arayüz özellikleri: 
+
+Slider ile giriş alma  
+
+Hesapla butonu  
+
+Üyelik fonksiyonları grafikleri  
+
+Aktif kurallar listesi  
+
+Durulaştırılmış sonuç grafiği  
+
+Test senaryoları tablosu  
+
+ 
+
+8. Test Sonuçları ve Analiz 
+
+Senaryo 1: 
+
+Giriş değerleri: 
+
+Çalışma süresi: 6 
+Uyku: 8 
+Aktivite: 85 
+Stres: 20 
+
+Sonuç: Çok Yüksek Verimlilik 
+
+Yorum: Uyku süresi yüksek, aktivite yüksek ve stres düşük olduğu için sistem yüksek verimlilik üretmiştir. 
+
+ 
+
+Senaryo 2: 
+
+Giriş değerleri: 
+
+Çalışma süresi: 9 
+Uyku: 3 
+Aktivite: 30 
+Stres: 90 
+
+Sonuç: Çok Düşük Verimlilik 
+
+Yorum: Yüksek stres ve düşük uyku seviyesi verimliliği ciddi biçimde azaltmıştır. 
+
+ 
+
+Senaryo 3: 
+
+Giriş değerleri: 
+
+Çalışma süresi: 5 
+Uyku: 6 
+Aktivite: 55 
+Stres: 45 
+
+Sonuç: Orta Verimlilik 
+
+Yorum: Giriş değerleri dengeli olduğu için sistem orta düzey sonuç üretmiştir. 
+
+ 
+
+9. Sonuç ve Değerlendirme 
+
+Bu projede bulanık mantık kullanılarak yazılım geliştiricilerin verimlilik düzeylerini tahmin eden bir sistem geliştirilmiştir. 
+
+Sistem gerçek yaşam koşullarına daha uygun sonuçlar üretmiştir. 
+
+Güçlü yönleri: 
+
+Belirsizlikleri değerlendirebilmesi  
+
+İnsan davranışlarına uygun sonuçlar üretmesi  
+
+Esnek karar yapısı  
+
+Kullanıcı dostu arayüz  
+
+Zayıf yönleri: 
+
+Kural sayısı arttıkça sistem karmaşıklaşmaktadır  
+
+Uzman bilgisine bağımlıdır  
+
+Gerçek verilerle eğitilmemiştir  
+
+Gelecekte yapılabilecek geliştirmeler: 
+
+Yapay zeka modelleriyle hibrit yapı kurulabilir  
+
+Gerçek kullanıcı verileri ile öğrenme sistemi eklenebilir  
+
+Mobil uygulama desteği geliştirilebilir 
+
+ 
