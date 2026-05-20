@@ -3,16 +3,16 @@
 
 ### Proje Hakkında
 
-FuzzyDev, yazılım geliştiricilerin günlük çalışma koşullarına göre verimlilik düzeylerini bulanık mantık yöntemi ile analiz eden bir karar destek sistemidir.
+FuzzyDev, yazılım geliştiricilerin günlük çalışma koşullarına göre verimlilik düzeylerini bulanık mantık yöntemi ile analiz eden Python tabanlı bir karar destek sistemidir.
 
 Sistem aşağıdaki girdileri kullanmaktadır:
 
-- Çalışma süresi
-- Uyku süresi
-- Aktivite seviyesi
-- Stres seviyesi
+- Çalışma Süresi
+- Uyku Süresi
+- Aktivite Seviyesi
+- Stres Seviyesi
 
-Bu girdiler bulanık mantık yöntemleri ile değerlendirilerek kullanıcı için 0–100 arası bir verimlilik skoru oluşturulmaktadır.
+Bu girdiler bulanık mantık yöntemleri kullanılarak değerlendirilir ve kullanıcı için 0–100 arası bir verimlilik skoru üretilir.
 
 ---
 
@@ -29,41 +29,33 @@ Bu girdiler bulanık mantık yöntemleri ile değerlendirilerek kullanıcı içi
 
 ## Sistem Mimarisi
 
-Giriş Değişkenleri:
+### Giriş Değişkenleri
 
-1. Çalışma Süresi (0–12 saat)
-
-Dilsel ifadeler:
+#### Çalışma Süresi (0–12 saat)
 
 - Az
 - Normal
 - Fazla
 
-2. Uyku Süresi (0–10 saat)
-
-Dilsel ifadeler:
+#### Uyku Süresi (0–10 saat)
 
 - Kötü
 - Orta
 - İyi
 
-3. Aktivite Seviyesi (0–100)
-
-Dilsel ifadeler:
+#### Aktivite Seviyesi (0–100)
 
 - Düşük
 - Orta
 - Yüksek
 
-4. Stres Seviyesi (0–100)
-
-Dilsel ifadeler:
+#### Stres Seviyesi (0–100)
 
 - Düşük
 - Orta
 - Yüksek
 
-Çıkış:
+### Çıkış Değişkeni
 
 Verimlilik Skoru (0–100)
 
@@ -81,20 +73,22 @@ Dilsel ifadeler:
 
 ### Bulanıklaştırma
 
-Sistem kullanıcıdan alınan sayısal girişleri üyelik fonksiyonları yardımıyla dilsel değerlere dönüştürmektedir.
+Sistem kullanıcıdan alınan sayısal girişleri üyelik fonksiyonları ile dilsel değerlere dönüştürmektedir.
 
 ### Kural Tabanı
 
-Projede 20 farklı IF–THEN kuralı kullanılmıştır.
+Projede toplam 20 adet IF–THEN kuralı kullanılmıştır.
 
 Örnek:
 
-IF çalışma süresi Normal  
-AND uyku İyi  
-AND aktivite Yüksek  
-AND stres Düşük
+```text
+IF çalışma süresi = Normal
+AND uyku = İyi
+AND aktivite = Yüksek
+AND stres = Düşük
 
-THEN verimlilik Çok Yüksek
+THEN verimlilik = Çok Yüksek
+```
 
 ### Çıkarım Motoru
 
@@ -119,6 +113,26 @@ Centroid (Ağırlık Merkezi) yöntemi kullanılmıştır.
 ✔ Durulaştırılmış sonuç grafiği
 
 ✔ Test senaryoları
+
+---
+
+## Ekran Görüntüleri
+
+### Ana Arayüz
+
+![Ana Arayüz](screenshots/arayuz.png)
+
+---
+
+### Üyelik Fonksiyonları
+
+![Üyelik Fonksiyonları](screenshots/uyelik_fonksiyonlari.png)
+
+---
+
+### Test Senaryoları
+
+![Test Senaryoları](screenshots/test_senaryolari.png)
 
 ---
 
@@ -152,14 +166,11 @@ streamlit run app.py
 
 ## Test Sonuçları
 
-Proje içerisinde örnek test senaryoları bulunmaktadır.
-
-Örnek:
-
 | Çalışma | Uyku | Aktivite | Stres | Sonuç |
 |----------|-------|----------|--------|--------|
 |6|8|85|20|Çok Yüksek|
 |9|3|30|90|Çok Düşük|
+|5|6|55|45|Orta|
 
 ---
 
@@ -173,4 +184,4 @@ https://github.com/haticekctrk02
 
 LinkedIn:
 
-www.linkedin.com/in/hatice-kocatürk-94b311288
+https://www.linkedin.com/in/hatice-kocatürk-94b311288
